@@ -7,21 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;600&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root {
-  --gold:       #a67c45;
-  --gold-light: #c9a96e;
-  --gold-dark:  #7a5828;
-  --cream-bg:   #f5ede0;
-  --cream-card: #fff8ee;
-  --text-dark:  #3d2e1a;
-  --text-mid:   #6b4f2e;
-  --rose:       #c0665d;
-  --green:      #3a5f35;
-  --border:     rgba(166,124,69,0.28);
-  --shadow:     0 4px 24px rgba(166,124,69,0.1);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+:root{--gold:#a67c45;--gold-light:#c9a96e;--gold-dark:#7a5828;--cream-bg:#f5ede0;--cream-card:#fff8ee;--text-dark:#3d2e1a;--text-mid:#6b4f2e;--rose:#c0665d;--green:#3a5f35;--border:rgba(166,124,69,0.28);--shadow:0 4px 24px rgba(166,124,69,0.1);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',sans-serif;min-height:100vh;}
 .site-header{text-align:center;padding:52px 20px 36px;background:linear-gradient(to bottom,#eeddd0,var(--cream-bg));border-bottom:1px solid var(--border);}
 .header-ornament{font-size:1rem;color:var(--gold-light);letter-spacing:0.7em;display:block;margin-bottom:16px;}
@@ -92,6 +79,8 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 .lightbox-close:hover{background:rgba(166,124,69,0.5);}
 .upload-card{max-width:580px;margin:0 auto;border:1px solid var(--border);background:var(--cream-card);box-shadow:var(--shadow);padding:44px 40px;position:relative;}
 .upload-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
+.upload-notice{background:linear-gradient(135deg,#fff8ee,#f5ede0);border:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 16px;margin-bottom:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--text-mid);line-height:1.6;}
+.upload-notice i{color:var(--gold);margin-right:6px;}
 .form-field{margin-bottom:22px;}
 .form-label{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:8px;}
 .form-required{color:var(--rose);margin-left:3px;}
@@ -117,7 +106,7 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 #upload-status{font-size:0.75rem;color:var(--gold-dark);text-align:center;font-weight:300;}
 .modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(20,10,4,0.7);display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
-.modal-box{background:var(--cream-card);border:1px solid var(--border);box-shadow:0 8px 60px rgba(0,0,0,0.2);padding:40px 36px;max-width:440px;width:100%;position:relative;text-align:center;}
+.modal-box{background:var(--cream-card);border:1px solid var(--border);box-shadow:0 8px 60px rgba(0,0,0,0.2);padding:40px 36px;max-width:480px;width:100%;position:relative;text-align:center;}
 .modal-box::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
 .modal-title{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
 .modal-body{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text-mid);line-height:1.7;margin-bottom:20px;}
@@ -125,12 +114,21 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 .delete-code-label{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:block;}
 .delete-code-number{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--text-dark);letter-spacing:0.3em;display:block;line-height:1;}
 .delete-code-warning{font-size:0.75rem;color:var(--rose);margin-top:10px;font-weight:400;display:block;}
+.delete-code-info{font-size:0.78rem;color:var(--text-mid);margin-top:8px;line-height:1.5;display:block;}
+/* 4 hane giriş */
 .code-input-wrap{display:flex;gap:10px;justify-content:center;margin:16px 0;}
-.code-digit{width:52px;height:64px;border:2px solid var(--border);background:#fdf8f2;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;text-align:center;color:var(--text-dark);outline:none;transition:border-color 0.2s;border-radius:2px;}
+.code-digit{width:52px;height:64px;border:2px solid var(--border);background:#fdf8f2;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;text-align:center;color:var(--text-dark);outline:none;transition:border-color 0.2s;border-radius:2px;ime-mode:disabled;}
 .code-digit:focus{border-color:var(--gold);}
-.modal-actions{display:flex;gap:12px;justify-content:center;margin-top:20px;}
+.modal-actions{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
 .modal-close-btn{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.1rem;color:var(--text-mid);cursor:pointer;padding:4px 8px;}
 .modal-close-btn:hover{color:var(--rose);}
+/* My photos modal */
+.my-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:16px 0;max-height:300px;overflow-y:auto;}
+.my-photo-item{position:relative;aspect-ratio:1;cursor:pointer;border:2px solid transparent;border-radius:2px;overflow:hidden;transition:border-color 0.2s;}
+.my-photo-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.my-photo-item.selected{border-color:var(--rose);}
+.my-photo-item .del-check{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(192,102,93,0.9);color:#fff;font-size:0.65rem;display:none;align-items:center;justify-content:center;}
+.my-photo-item.selected .del-check{display:flex;}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;font-size:0.82rem;border-radius:2px;z-index:3000;box-shadow:0 4px 20px rgba(0,0,0,0.2);max-width:90vw;text-align:center;display:none;}
 .toast.error{background:#7a2a22;color:#ffeae8;}
 .toast.success{background:var(--green);color:#e8f5e5;}
@@ -146,20 +144,15 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
   <span class="header-sub">Nişan Albümü — 26 Nisan 2026</span>
   <h1 class="header-title">Yaren <span class="amp">&amp;</span> Mahir</h1>
   <span class="header-tag">Anılarımızı Birlikte Biriktirelim</span>
-  <div class="divider-thin">
-    <div class="dl"></div><div class="dd"></div><div class="dl r"></div>
-  </div>
+  <div class="divider-thin"><div class="dl"></div><div class="dd"></div><div class="dl r"></div></div>
 </header>
 
 <div class="tabs-wrap">
-  <button class="tab-btn active" onclick="switchTab('gallery')" id="tab-gallery">
-    <i class="fa-solid fa-images"></i> Fotoğraflar
-  </button>
-  <button class="tab-btn" onclick="switchTab('upload')" id="tab-upload">
-    <i class="fa-solid fa-cloud-arrow-up"></i> Fotoğraf Yükle
-  </button>
+  <button class="tab-btn active" onclick="switchTab('gallery')" id="tab-gallery"><i class="fa-solid fa-images"></i> Fotoğraflar</button>
+  <button class="tab-btn" onclick="switchTab('upload')" id="tab-upload"><i class="fa-solid fa-cloud-arrow-up"></i> Fotoğraf Yükle</button>
 </div>
 
+<!-- GALLERY -->
 <div class="section active" id="section-gallery">
   <div class="section-heading">Tüm Anılar</div>
   <div class="gallery-toolbar">
@@ -168,24 +161,23 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
       <span class="btn-sm" id="select-counter"><i class="fa-solid fa-check-square"></i><span id="select-count-text">0 seçildi</span></span>
       <button class="btn-sm" onclick="toggleSelectMode()" id="btn-select-mode"><i class="fa-solid fa-object-group"></i> Çoklu Seç</button>
       <button class="btn-sm primary" id="btn-download-selected" onclick="downloadSelected()" style="display:none;"><i class="fa-solid fa-download"></i> Seçilenleri İndir</button>
+      <button class="btn-sm danger" onclick="openMyPhotosModal()"><i class="fa-solid fa-trash"></i> Fotoğrafımı Sil</button>
       <button class="btn-sm" onclick="loadPhotos()" title="Yenile"><i class="fa-solid fa-rotate-right"></i></button>
     </div>
   </div>
-  <div id="gallery-loader">
-    <i class="fa-solid fa-spinner"></i>
-    <span style="font-size:0.8rem;color:var(--text-mid);letter-spacing:0.1em;">Fotoğraflar yükleniyor...</span>
-  </div>
-  <div id="empty-state">
-    <i class="fa-solid fa-camera"></i>
-    <p>Henüz fotoğraf yüklenmemiş.</p>
-    <p style="margin-top:8px;font-size:0.8rem;color:rgba(107,79,46,0.6);">İlk fotoğrafı siz yükleyin!</p>
-  </div>
+  <div id="gallery-loader"><i class="fa-solid fa-spinner"></i><span style="font-size:0.8rem;color:var(--text-mid);letter-spacing:0.1em;">Fotoğraflar yükleniyor...</span></div>
+  <div id="empty-state"><i class="fa-solid fa-camera"></i><p>Henüz fotoğraf yüklenmemiş.</p><p style="margin-top:8px;font-size:0.8rem;color:rgba(107,79,46,0.6);">İlk fotoğrafı siz yükleyin!</p></div>
   <div class="photo-grid" id="photo-grid"></div>
 </div>
 
+<!-- UPLOAD -->
 <div class="section" id="section-upload">
   <div class="section-heading">Anı Paylaş</div>
   <div class="upload-card">
+    <div class="upload-notice">
+      <i class="fa-solid fa-circle-info"></i>
+      Lütfen yalnızca <strong>nişan gününde</strong> çekilmiş fotoğraflarınızı ekleyiniz. Başka türde fotoğraflar kullanmayınız.
+    </div>
     <div class="form-field">
       <label class="form-label" for="upload-name">Adınız <span class="form-required">*</span></label>
       <input class="form-input" type="text" id="upload-name" placeholder="Adınızı girin" maxlength="60">
@@ -205,9 +197,7 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
       <textarea class="form-textarea" id="upload-note" placeholder="Bu anıyla ilgili bir şeyler yazabilirsiniz..." maxlength="300"></textarea>
     </div>
     <div class="upload-btn-wrap">
-      <button class="btn-upload" id="upload-btn" onclick="handleUpload()">
-        <i class="fa-solid fa-cloud-arrow-up"></i> Yükle
-      </button>
+      <button class="btn-upload" id="upload-btn" onclick="handleUpload()"><i class="fa-solid fa-cloud-arrow-up"></i> Yükle</button>
     </div>
     <div id="upload-progress">
       <div class="progress-track"><div id="progress-bar-fill"></div></div>
@@ -216,6 +206,7 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
   </div>
 </div>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
   <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
   <div class="lightbox-img-wrap"><img id="lightbox-img" src="" alt=""></div>
@@ -224,46 +215,68 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
     <p class="lightbox-note" id="lightbox-note"></p>
     <div class="lightbox-actions">
       <button class="btn-sm primary" onclick="downloadCurrentLightbox()"><i class="fa-solid fa-download"></i> İndir</button>
-      <button class="btn-sm danger" onclick="openDeleteModal(_lbPid)"><i class="fa-solid fa-trash"></i> Sil</button>
     </div>
   </div>
 </div>
 
+<!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="modal-success">
   <div class="modal-box">
     <button class="modal-close-btn" onclick="closeModal('modal-success')"><i class="fa-solid fa-xmark"></i></button>
     <div style="font-size:2rem;margin-bottom:12px;">✓</div>
     <p class="modal-title">Fotoğraf Yüklendi!</p>
-    <p class="modal-body">Fotoğrafınız albüme eklendi. Eğer fotoğrafı silmek isterseniz aşağıdaki kodu kullanın.</p>
+    <p class="modal-body">Fotoğrafınız albüme eklendi. Fotoğraflarınızı silmek isterseniz aşağıdaki kodu kullanabilirsiniz.</p>
     <div class="delete-code-box">
       <span class="delete-code-label">Silme Kodunuz</span>
       <span class="delete-code-number" id="shown-delete-code">0000</span>
       <span class="delete-code-warning"><i class="fa-solid fa-triangle-exclamation"></i> Bu kodu not alın! Tekrar gösterilmeyecek.</span>
+      <span class="delete-code-info">Bu kod ile yüklediğiniz <strong>tüm fotoğrafları</strong> adınızla birlikte kullanarak silebilirsiniz.</span>
     </div>
     <div class="modal-actions">
-      <button class="btn-sm primary" onclick="closeModal('modal-success');switchTab('gallery');loadPhotos();">
-        <i class="fa-solid fa-images"></i> Galeriye Git
-      </button>
+      <button class="btn-sm primary" onclick="closeModal('modal-success');switchTab('gallery');loadPhotos();"><i class="fa-solid fa-images"></i> Galeriye Git</button>
     </div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-delete">
-  <div class="modal-box">
-    <button class="modal-close-btn" onclick="closeModal('modal-delete')"><i class="fa-solid fa-xmark"></i></button>
-    <div style="font-size:2rem;margin-bottom:12px;color:var(--rose);"><i class="fa-solid fa-trash"></i></div>
-    <p class="modal-title">Fotoğrafı Sil</p>
-    <p class="modal-body">Fotoğrafı silmek için yükleme sırasında size verilen <strong>4 haneli silme kodunu</strong> girin.</p>
-    <div class="code-input-wrap">
-      <input class="code-digit" type="text" maxlength="1" id="d1" oninput="digitInput(this,'d2')" onkeydown="digitBack(event,this,'')">
-      <input class="code-digit" type="text" maxlength="1" id="d2" oninput="digitInput(this,'d3')" onkeydown="digitBack(event,this,'d1')">
-      <input class="code-digit" type="text" maxlength="1" id="d3" oninput="digitInput(this,'d4')" onkeydown="digitBack(event,this,'d2')">
-      <input class="code-digit" type="text" maxlength="1" id="d4" oninput="digitInput(this,'')"  onkeydown="digitBack(event,this,'d3')">
+<!-- MY PHOTOS MODAL — adını ve kodu gir, fotoğraflarını gör, seç, sil -->
+<div class="modal-overlay" id="modal-my-photos">
+  <div class="modal-box" style="max-width:560px;">
+    <button class="modal-close-btn" onclick="closeModal('modal-my-photos')"><i class="fa-solid fa-xmark"></i></button>
+    <div style="font-size:1.8rem;margin-bottom:12px;color:var(--rose);"><i class="fa-solid fa-trash-can"></i></div>
+    <p class="modal-title">Fotoğraflarımı Sil</p>
+
+    <!-- ADIM 1: Kimlik doğrulama -->
+    <div id="step-auth">
+      <p class="modal-body">Fotoğraflarınızı görmek için yükleme sırasında kullandığınız <strong>adınızı</strong> ve size verilen <strong>4 haneli silme kodunu</strong> girin.</p>
+      <div class="form-field" style="text-align:left;">
+        <label class="form-label">Adınız</label>
+        <input class="form-input" type="text" id="my-name-input" placeholder="Yükleme sırasında girdiğiniz ad">
+      </div>
+      <div class="form-field">
+        <label class="form-label" style="text-align:left;display:block;">Silme Kodunuz</label>
+        <div class="code-input-wrap">
+          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d1" autocomplete="off">
+          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d2" autocomplete="off">
+          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d3" autocomplete="off">
+          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d4" autocomplete="off">
+        </div>
+        <p id="auth-error" style="color:var(--rose);font-size:0.8rem;min-height:1.2em;text-align:center;"></p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-sm" onclick="closeModal('modal-my-photos')">İptal</button>
+        <button class="btn-sm primary" onclick="findMyPhotos()"><i class="fa-solid fa-magnifying-glass"></i> Fotoğraflarımı Bul</button>
+      </div>
     </div>
-    <p id="delete-error" style="color:var(--rose);font-size:0.8rem;min-height:1.2em;text-align:center;margin-top:4px;"></p>
-    <div class="modal-actions">
-      <button class="btn-sm" onclick="closeModal('modal-delete')">İptal</button>
-      <button class="btn-sm danger" id="btn-confirm-delete" onclick="confirmDelete()"><i class="fa-solid fa-trash"></i> Sil</button>
+
+    <!-- ADIM 2: Fotoğrafları göster ve sil -->
+    <div id="step-select" style="display:none;">
+      <p class="modal-body" id="my-photos-info"></p>
+      <div class="my-photos-grid" id="my-photos-grid"></div>
+      <p id="select-error" style="color:var(--rose);font-size:0.8rem;min-height:1.2em;text-align:center;margin-top:8px;"></p>
+      <div class="modal-actions">
+        <button class="btn-sm" onclick="showStep('step-auth')">Geri</button>
+        <button class="btn-sm danger" id="btn-delete-selected" onclick="deleteSelectedPhotos()"><i class="fa-solid fa-trash"></i> Seçilenleri Sil</button>
+      </div>
     </div>
   </div>
 </div>
@@ -274,8 +287,11 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 <script>
 const CLOUD_NAME    = "dp4kalxzq";
 const UPLOAD_PRESET = "nisan_album";
-const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
-const LIST_URL   = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/nisan.json`;
+const UPLOAD_URL    = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
+const LIST_URL      = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/nisan.json`;
+
+// Yerel önbellek — sayfa yenilemeden hızlı güncelleme için
+let _photoCache = [];
 
 function showToast(msg, type='error') {
   const t = document.getElementById('toast');
@@ -285,6 +301,10 @@ function showToast(msg, type='error') {
 }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function showStep(id) {
+  document.getElementById('step-auth').style.display = id==='step-auth' ? 'block' : 'none';
+  document.getElementById('step-select').style.display = id==='step-select' ? 'block' : 'none';
+}
 function switchTab(tab) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -292,18 +312,15 @@ function switchTab(tab) {
   document.getElementById('tab-'+tab).classList.add('active');
 }
 
-/* ── CONTEXT PARSER: "key=value|key2=value2" formatını objeye çevirir ── */
+/* ── CONTEXT PARSER ── */
 function parseContext(r) {
   try {
-    // Cloudinary bazen context'i {custom:{...}} bazen düz string olarak verir
-    if (r.context && typeof r.context === 'object' && r.context.custom) {
-      return r.context.custom;
-    }
+    if (r.context && r.context.custom) return r.context.custom;
     if (r.context && typeof r.context === 'string') {
       const obj = {};
       r.context.split('|').forEach(pair => {
         const idx = pair.indexOf('=');
-        if (idx > -1) obj[pair.slice(0,idx)] = pair.slice(idx+1);
+        if (idx > -1) obj[pair.slice(0,idx)] = decodeURIComponent(pair.slice(idx+1));
       });
       return obj;
     }
@@ -312,67 +329,68 @@ function parseContext(r) {
 }
 
 /* ── LOAD PHOTOS ── */
-async function loadPhotos() {
+async function loadPhotos(skipCache=true) {
   const grid=document.getElementById('photo-grid'), empty=document.getElementById('empty-state'), loader=document.getElementById('gallery-loader');
   loader.style.display='flex'; grid.innerHTML=''; empty.style.display='none';
   try {
-    const res = await fetch(LIST_URL);
+    const res = await fetch(LIST_URL + '?t=' + Date.now()); // cache buster
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
-    const resources = (data.resources||[]).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+    _photoCache = (data.resources||[]).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
     loader.style.display='none';
-    if (!resources.length) { empty.style.display='block'; return; }
-    document.getElementById('gallery-count').textContent = resources.length+' fotoğraf';
-    resources.forEach((r,i) => {
-      const ctx  = parseContext(r);
-      const name = (ctx.name || 'Misafir').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      const note = (ctx.note || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      const url  = r.secure_url || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`;
-      const thumb= url;
-      const pid  = r.public_id || '';
-
-      // onclick için JS string escape
-      const sn  = name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-      const snt = note.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-      const su  = url.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-      const sp  = pid.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-
-      const card=document.createElement('div');
-      card.className='photo-card'; card.style.animationDelay=(i*0.04)+'s';
-      card.innerHTML=`
-        <div class="photo-card-inner">
-          <img src="${thumb}" alt="Nişan fotoğrafı" loading="lazy">
-          <div class="photo-overlay">
-            <div class="photo-overlay-content">
-              <p class="photo-uploader"><i class="fa-solid fa-user"></i> ${name}</p>
-              ${note ? '<p class="photo-note">&quot;'+note+'&quot;</p>' : ''}
-              <div class="photo-actions">
-                <button class="btn-icon" title="Büyüt" onclick="openLightbox('${su}','${sn}','${snt}','${sp}')"><i class="fa-solid fa-expand"></i></button>
-                <button class="btn-icon" title="İndir" onclick="downloadPhoto('${su}','${sp}')"><i class="fa-solid fa-download"></i></button>
-                <button class="btn-icon btn-delete" title="Sil" onclick="openDeleteModal('${sp}')"><i class="fa-solid fa-trash"></i></button>
-              </div>
-            </div>
-          </div>
-          <label class="select-checkbox" title="Seç">
-            <input type="checkbox" class="photo-select" data-url="${url}" data-file="${pid}">
-            <span class="checkmark"><i class="fa-solid fa-check"></i></span>
-          </label>
-        </div>`;
-      grid.appendChild(card);
-    });
+    renderGrid(_photoCache);
   } catch(e) {
     loader.style.display='none'; empty.style.display='block';
-    console.error('loadPhotos error:', e);
+    console.error('loadPhotos:', e);
   }
 }
 
+function renderGrid(resources) {
+  const grid = document.getElementById('photo-grid');
+  const empty = document.getElementById('empty-state');
+  grid.innerHTML='';
+  if (!resources.length) { empty.style.display='block'; document.getElementById('gallery-count').textContent=''; return; }
+  empty.style.display='none';
+  document.getElementById('gallery-count').textContent = resources.length+' fotoğraf';
+  resources.forEach((r,i) => {
+    const ctx  = parseContext(r);
+    const name = (ctx.name || ctx.caption || 'Misafir');
+    const note = (ctx.note  || ctx.alt    || '');
+    const url  = r.secure_url || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`;
+    const pid  = r.public_id || '';
+    const safeAttr = (s) => s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const safeJs   = (s) => s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const card=document.createElement('div');
+    card.className='photo-card'; card.style.animationDelay=(i*0.04)+'s';
+    card.innerHTML=`
+      <div class="photo-card-inner" onclick="openLightbox('${safeJs(url)}','${safeJs(name)}','${safeJs(note)}','${safeJs(pid)}')">
+        <img src="${safeAttr(url)}" alt="Nişan fotoğrafı" loading="lazy">
+        <div class="photo-overlay">
+          <div class="photo-overlay-content">
+            <p class="photo-uploader"><i class="fa-solid fa-user"></i> ${name}</p>
+            ${note ? `<p class="photo-note">&ldquo;${note}&rdquo;</p>` : ''}
+            <div class="photo-actions" onclick="event.stopPropagation()">
+              <button class="btn-icon" title="İndir" onclick="downloadPhoto('${safeJs(url)}','${safeJs(pid)}')"><i class="fa-solid fa-download"></i></button>
+            </div>
+          </div>
+        </div>
+        <label class="select-checkbox" title="Seç" onclick="event.stopPropagation()">
+          <input type="checkbox" class="photo-select" data-url="${safeAttr(url)}" data-file="${safeAttr(pid)}">
+          <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+        </label>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+/* ── UPLOAD ── */
 function generateCode() { return String(Math.floor(1000 + Math.random() * 9000)); }
 
 async function handleUpload() {
-  const nameVal=document.getElementById('upload-name').value.trim();
-  const noteVal=document.getElementById('upload-note').value.trim();
-  const fileInp=document.getElementById('upload-file');
-  const files=fileInp.files;
+  const nameVal = document.getElementById('upload-name').value.trim();
+  const noteVal = document.getElementById('upload-note').value.trim();
+  const fileInp = document.getElementById('upload-file');
+  const files   = fileInp.files;
   if (!nameVal)      { showToast('Lütfen adınızı girin.'); return; }
   if (!files.length) { showToast('Lütfen en az bir fotoğraf seçin.'); return; }
 
@@ -388,7 +406,8 @@ async function handleUpload() {
       fd.append('file', file);
       fd.append('upload_preset', UPLOAD_PRESET);
       fd.append('tags', 'nisan');
-      fd.append('context', 'name='+encodeURIComponent(nameVal)+'|note='+encodeURIComponent(noteVal)+'|deleteCode='+deleteCode);
+      // Türkçe karakter desteği için encodeURIComponent
+      fd.append('context', `name=${encodeURIComponent(nameVal)}|note=${encodeURIComponent(noteVal)}|deleteCode=${deleteCode}`);
 
       await new Promise((resolve,reject) => {
         const xhr=new XMLHttpRequest();
@@ -406,9 +425,7 @@ async function handleUpload() {
       });
     }
 
-    bar.style.width='100%';
-    status.textContent=files.length+' fotoğraf yüklendi!';
-
+    bar.style.width='100%'; status.textContent=files.length+' fotoğraf yüklendi!';
     setTimeout(() => {
       btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-cloud-arrow-up"></i> Yükle';
       prog.style.display='none'; bar.style.width='0';
@@ -420,14 +437,13 @@ async function handleUpload() {
       document.getElementById('shown-delete-code').textContent = deleteCode;
       openModal('modal-success');
     }, 1200);
-
   } catch(e) {
     btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-cloud-arrow-up"></i> Yükle'; prog.style.display='none';
     showToast('Yükleme başarısız. Lütfen tekrar deneyin.');
-    console.error('upload error:', e);
   }
 }
 
+/* ── FILE PREVIEW ── */
 function previewFiles(input) {
   const preview=document.getElementById('file-preview'), label=document.getElementById('file-label-text');
   preview.innerHTML='';
@@ -445,80 +461,156 @@ dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.a
 dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
 dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');const input=document.getElementById('upload-file');input.files=e.dataTransfer.files;previewFiles(input);});
 
-let _lbUrl='', _lbFile='', _lbPid='';
+/* ── LIGHTBOX ── */
+let _lbUrl='', _lbFile='';
 function openLightbox(url,name,note,pid) {
   document.getElementById('lightbox-img').src=url;
   document.getElementById('lightbox-name').textContent=name ? '📷 '+name : '';
   const ne=document.getElementById('lightbox-note');
-  ne.textContent=note ? '"'+note+'"' : '';
-  ne.style.display=note ? 'block' : 'none';
-  _lbUrl=url; _lbFile=pid; _lbPid=pid;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
+  ne.textContent=note ? '"'+note+'"' : ''; ne.style.display=note?'block':'none';
+  _lbUrl=url; _lbFile=pid;
+  document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden';
 }
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
-  document.getElementById('lightbox-img').src='';
-  document.body.style.overflow='';
+  document.getElementById('lightbox-img').src=''; document.body.style.overflow='';
 }
 function closeLightboxOutside(e) { if (e.target===document.getElementById('lightbox')) closeLightbox(); }
-document.addEventListener('keydown',e=>{ if (e.key==='Escape') { closeLightbox(); closeModal('modal-delete'); closeModal('modal-success'); }});
+document.addEventListener('keydown',e=>{ if (e.key==='Escape') { closeLightbox(); closeModal('modal-my-photos'); closeModal('modal-success'); }});
 function downloadCurrentLightbox() { downloadPhoto(_lbUrl,_lbFile); }
 
+/* ── DOWNLOAD ── */
 async function downloadPhoto(url,filename) {
   try {
     const res=await fetch(url); const blob=await res.blob();
     const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-    a.download=(filename ? filename.split('/').pop() : 'nisan-foto')+'.jpg';
+    a.download=(filename?filename.split('/').pop():'nisan-foto')+'.jpg';
     a.click(); URL.revokeObjectURL(a.href);
   } catch { window.open(url,'_blank'); }
 }
 
-let _deletePid = '';
-function openDeleteModal(pid) {
-  _deletePid = pid;
-  ['d1','d2','d3','d4'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('delete-error').textContent='';
-  document.getElementById('btn-confirm-delete').disabled=false;
-  document.getElementById('btn-confirm-delete').innerHTML='<i class="fa-solid fa-trash"></i> Sil';
-  openModal('modal-delete');
-  setTimeout(()=>document.getElementById('d1').focus(),100);
-}
-function digitInput(el, nextId) {
-  el.value = el.value.replace(/\D/g,'');
-  if (el.value && nextId) document.getElementById(nextId)?.focus();
-}
-function digitBack(e, el, prevId) {
-  if (e.key==='Backspace' && !el.value && prevId) document.getElementById(prevId)?.focus();
+/* ── 4 HANELİ KOD GİRİŞİ (yapıştırma destekli) ── */
+function initCodeInputs() {
+  const digits = ['d1','d2','d3','d4'];
+  digits.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => {
+      const val = el.value.replace(/\D/g,'');
+      el.value = val.slice(-1); // sadece 1 hane
+      if (el.value && idx < 3) document.getElementById(digits[idx+1]).focus();
+    });
+    el.addEventListener('keydown', e => {
+      if (e.key==='Backspace' && !el.value && idx > 0) document.getElementById(digits[idx-1]).focus();
+    });
+    el.addEventListener('paste', e => {
+      e.preventDefault();
+      const pasted = (e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'').slice(0,4);
+      digits.forEach((did, i) => {
+        document.getElementById(did).value = pasted[i] || '';
+      });
+      const nextEmpty = digits.find((did,i) => !pasted[i]);
+      if (nextEmpty) document.getElementById(nextEmpty).focus();
+      else document.getElementById(digits[3]).focus();
+    });
+  });
 }
 
-async function confirmDelete() {
+/* ── MY PHOTOS MODAL ── */
+function openMyPhotosModal() {
+  document.getElementById('my-name-input').value = '';
+  ['d1','d2','d3','d4'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('auth-error').textContent = '';
+  showStep('step-auth');
+  openModal('modal-my-photos');
+  setTimeout(()=>document.getElementById('my-name-input').focus(), 100);
+}
+
+let _myPhotoPids = [];
+
+async function findMyPhotos() {
+  const name = document.getElementById('my-name-input').value.trim();
   const code = ['d1','d2','d3','d4'].map(id=>document.getElementById(id).value).join('');
-  if (code.length < 4) { document.getElementById('delete-error').textContent='Lütfen 4 haneli kodu eksiksiz girin.'; return; }
-  const btn=document.getElementById('btn-confirm-delete');
+  if (!name) { document.getElementById('auth-error').textContent='Lütfen adınızı girin.'; return; }
+  if (code.length < 4) { document.getElementById('auth-error').textContent='Lütfen 4 haneli kodu eksiksiz girin.'; return; }
+
+  document.getElementById('auth-error').textContent='';
+  // Önbellekten isim ve koda göre filtrele
+  const matches = _photoCache.filter(r => {
+    const ctx = parseContext(r);
+    const rName = (ctx.name||'').toLowerCase().trim();
+    const rCode = (ctx.deleteCode||'').trim();
+    return rName === name.toLowerCase().trim() && rCode === code;
+  });
+
+  if (!matches.length) {
+    document.getElementById('auth-error').textContent='Ad veya kod eşleşmedi. Lütfen kontrol edin.';
+    return;
+  }
+
+  _myPhotoPids = matches.map(r=>r.public_id);
+  const grid = document.getElementById('my-photos-grid');
+  grid.innerHTML='';
+  matches.forEach(r => {
+    const url = r.secure_url || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`;
+    const div = document.createElement('div');
+    div.className='my-photo-item';
+    div.dataset.pid = r.public_id;
+    div.innerHTML=`<img src="${url}" loading="lazy"><span class="del-check"><i class="fa-solid fa-check"></i></span>`;
+    div.addEventListener('click', () => div.classList.toggle('selected'));
+    grid.appendChild(div);
+  });
+
+  document.getElementById('my-photos-info').textContent = `${matches.length} fotoğraf bulundu. Silmek istediklerinizi seçin.`;
+  document.getElementById('select-error').textContent='';
+  showStep('step-select');
+}
+
+async function deleteSelectedPhotos() {
+  const selected = Array.from(document.querySelectorAll('.my-photo-item.selected'));
+  if (!selected.length) { document.getElementById('select-error').textContent='Lütfen en az bir fotoğraf seçin.'; return; }
+
+  const btn = document.getElementById('btn-delete-selected');
   btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Siliniyor...';
-  document.getElementById('delete-error').textContent='';
-  try {
-    const res = await fetch('/.netlify/functions/delete-photo', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ publicId: _deletePid, deleteCode: code })
-    });
-    const data = await res.json();
-    if (res.ok && data.success) {
-      closeModal('modal-delete'); closeLightbox();
-      showToast('Fotoğraf silindi.', 'success');
-      loadPhotos();
+  document.getElementById('select-error').textContent='';
+
+  const code = ['d1','d2','d3','d4'].map(id=>document.getElementById(id).value).join('');
+  let successCount = 0;
+
+  for (const item of selected) {
+    try {
+      const res = await fetch('/.netlify/functions/delete-photo', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ publicId: item.dataset.pid, deleteCode: code })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        // Önbellekten kaldır ve grid'den kaldır
+        _photoCache = _photoCache.filter(r=>r.public_id !== item.dataset.pid);
+        item.remove();
+        successCount++;
+      }
+    } catch(e) { console.error(e); }
+  }
+
+  btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-trash"></i> Seçilenleri Sil';
+
+  if (successCount > 0) {
+    // Galeriyi önbellekten anlık güncelle
+    renderGrid(_photoCache);
+    showToast(successCount+' fotoğraf silindi.', 'success');
+    const remaining = document.querySelectorAll('.my-photo-item').length;
+    if (remaining === 0) {
+      closeModal('modal-my-photos');
     } else {
-      document.getElementById('delete-error').textContent = data.error || 'Silme başarısız.';
-      btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-trash"></i> Sil';
+      document.getElementById('my-photos-info').textContent = `${remaining} fotoğraf kaldı.`;
     }
-  } catch(e) {
-    document.getElementById('delete-error').textContent='Bağlantı hatası. Tekrar deneyin.';
-    btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-trash"></i> Sil';
+  } else {
+    document.getElementById('select-error').textContent = 'Silme işlemi başarısız oldu.';
   }
 }
 
+/* ── SELECT MODE ── */
 let selectMode=false;
 function toggleSelectMode() {
   selectMode=!selectMode;
@@ -541,6 +633,8 @@ async function downloadSelected() {
   showToast(checked.length+' fotoğraf indirildi.','success');
 }
 
+/* ── INIT ── */
+initCodeInputs();
 window.addEventListener('load', loadPhotos);
 </script>
 </body>
