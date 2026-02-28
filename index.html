@@ -327,8 +327,8 @@ async function loadPhotos() {
       const ctx  = parseContext(r);
       const name = (ctx.name || 'Misafir').replace(/</g,'&lt;').replace(/>/g,'&gt;');
       const note = (ctx.note || '').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      const url  = r.secure_url || '';
-      const thumb= url; // orijinal URL kullan, transform yok
+      const url  = r.secure_url || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`;
+      const thumb= url;
       const pid  = r.public_id || '';
 
       // onclick için JS string escape
