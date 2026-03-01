@@ -1,4 +1,3 @@
-// netlify/functions/delete-photo.js
 const https  = require("https");
 const crypto = require("crypto");
 
@@ -11,8 +10,8 @@ exports.handler = async function (event) {
   try { body = JSON.parse(event.body); }
   catch { return { statusCode: 400, body: JSON.stringify({ error: "Geçersiz istek" }) }; }
 
-  const { publicId, deleteCode } = body;
-  if (!publicId || !deleteCode) {
+  const { publicId, deviceId } = body;
+  if (!publicId || !deviceId) {
     return { statusCode: 400, body: JSON.stringify({ error: "Eksik parametre" }) };
   }
 
@@ -25,15 +24,16 @@ exports.handler = async function (event) {
   }
 
   try {
-    // Fotoğrafın metadata'sını çek, deleteCode'u doğrula
-    const info       = await cloudinaryGet(CLOUD_NAME, API_KEY, API_SECRET, publicId);
-    const storedCode = info?.context?.custom?.deleteCode;
+    const info = await cloudinaryGet(CLOUD_NAME, API_KEY, API_SECRET, publicId);
+    const contextRaw = info?.context?.custom || {};
+    let storedDeviceId = contextRaw.deviceId || "";
+    try { storedDeviceId = decodeURIComponent(storedDeviceId); } catch(e) {}
 
-    if (!storedCode) {
-      return { statusCode: 403, body: JSON.stringify({ error: "Bu fotoğraf için silme kodu bulunamadı." }) };
+    if (!storedDeviceId) {
+      return { statusCode: 403, body: JSON.stringify({ error: "Bu fotoğraf için cihaz bilgisi bulunamadı." }) };
     }
-    if (String(storedCode).trim() !== String(deleteCode).trim()) {
-      return { statusCode: 403, body: JSON.stringify({ error: "Silme kodu hatalı." }) };
+    if (storedDeviceId.trim() !== deviceId.trim()) {
+      return { statusCode: 403, body: JSON.stringify({ error: "Bu fotoğrafı silme yetkiniz yok." }) };
     }
 
     await cloudinaryDestroy(CLOUD_NAME, API_KEY, API_SECRET, publicId);
@@ -46,8 +46,8 @@ exports.handler = async function (event) {
 };
 
 function cloudinaryGet(cloudName, apiKey, apiSecret, publicId) {
-  const url  = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image/upload/${encodeURIComponent(publicId)}?context=true`;
-  const auth = Buffer.from(`${apiKey}:${apiSecret}`).toString("base64");
+  const url  = "https://api.cloudinary.com/v1_1/"+cloudName+"/resources/image/upload/"+encodeURIComponent(publicId)+"?context=true";
+  const auth = Buffer.from(apiKey+":"+apiSecret).toString("base64");
   return new Promise((resolve, reject) => {
     const req = https.request(url, { headers: { "Authorization": "Basic " + auth } }, (res) => {
       let d = "";
@@ -62,12 +62,12 @@ function cloudinaryGet(cloudName, apiKey, apiSecret, publicId) {
 function cloudinaryDestroy(cloudName, apiKey, apiSecret, publicId) {
   const timestamp = Math.round(Date.now() / 1000);
   const signature = crypto.createHash("sha1")
-    .update(`public_id=${publicId}&timestamp=${timestamp}${apiSecret}`)
+    .update("public_id="+publicId+"&timestamp="+timestamp+apiSecret)
     .digest("hex");
   const postData = new URLSearchParams({ public_id: publicId, timestamp, api_key: apiKey, signature }).toString();
   return new Promise((resolve, reject) => {
     const req = https.request(
-      `https://api.cloudinary.com/v1_1/${cloudName}/image/destroy`,
+      "https://api.cloudinary.com/v1_1/"+cloudName+"/image/destroy",
       { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded", "Content-Length": Buffer.byteLength(postData) } },
       (res) => {
         let d = "";
