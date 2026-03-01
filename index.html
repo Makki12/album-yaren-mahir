@@ -55,7 +55,6 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 .photo-actions{display:flex;gap:6px;}
 .btn-icon{width:32px;height:32px;border-radius:50%;background:rgba(255,248,238,0.15);border:1px solid rgba(255,248,238,0.3);color:#fff8ee;font-size:0.72rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;backdrop-filter:blur(4px);}
 .btn-icon:hover{background:rgba(166,124,69,0.7);border-color:var(--gold-light);}
-.btn-icon.btn-delete:hover{background:rgba(192,102,93,0.8);border-color:#e88880;}
 .select-checkbox{position:absolute;top:10px;right:10px;cursor:pointer;z-index:2;display:none;}
 .select-checkbox.show{display:block;}
 .select-checkbox input{display:none;}
@@ -79,8 +78,10 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 .lightbox-close:hover{background:rgba(166,124,69,0.5);}
 .upload-card{max-width:580px;margin:0 auto;border:1px solid var(--border);background:var(--cream-card);box-shadow:var(--shadow);padding:44px 40px;position:relative;}
 .upload-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
-.upload-notice{background:linear-gradient(135deg,#fff8ee,#f5ede0);border:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 16px;margin-bottom:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;color:var(--text-mid);line-height:1.6;}
+.upload-notice{background:linear-gradient(135deg,#fff8ee,#f5ede0);border:1px solid var(--border);border-left:3px solid var(--gold);padding:14px 16px;margin-bottom:24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.98rem;color:var(--text-mid);line-height:1.6;}
 .upload-notice i{color:var(--gold);margin-right:6px;}
+.device-code-notice{background:rgba(166,124,69,0.07);border:1px solid var(--border);padding:12px 16px;margin-bottom:24px;font-size:0.78rem;color:var(--text-mid);display:flex;align-items:center;gap:10px;line-height:1.5;}
+.device-code-notice i{color:var(--gold);flex-shrink:0;}
 .form-field{margin-bottom:22px;}
 .form-label{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:8px;}
 .form-required{color:var(--rose);margin-left:3px;}
@@ -106,29 +107,25 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
 #upload-status{font-size:0.75rem;color:var(--gold-dark);text-align:center;font-weight:300;}
 .modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(20,10,4,0.7);display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
-.modal-box{background:var(--cream-card);border:1px solid var(--border);box-shadow:0 8px 60px rgba(0,0,0,0.2);padding:40px 36px;max-width:480px;width:100%;position:relative;text-align:center;}
+.modal-box{background:var(--cream-card);border:1px solid var(--border);box-shadow:0 8px 60px rgba(0,0,0,0.2);padding:40px 36px;max-width:520px;width:100%;position:relative;text-align:center;max-height:90vh;overflow-y:auto;}
 .modal-box::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);}
 .modal-title{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;}
 .modal-body{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text-mid);line-height:1.7;margin-bottom:20px;}
-.delete-code-box{margin:20px 0;padding:24px;background:linear-gradient(135deg,#fff8ee,#f5ede0);border:2px solid var(--gold);text-align:center;}
-.delete-code-label{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:block;}
-.delete-code-number{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--text-dark);letter-spacing:0.3em;display:block;line-height:1;}
-.delete-code-warning{font-size:0.75rem;color:var(--rose);margin-top:10px;font-weight:400;display:block;}
-.delete-code-info{font-size:0.78rem;color:var(--text-mid);margin-top:8px;line-height:1.5;display:block;}
-/* 4 hane giriş */
-.code-input-wrap{display:flex;gap:10px;justify-content:center;margin:16px 0;}
-.code-digit{width:52px;height:64px;border:2px solid var(--border);background:#fdf8f2;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;text-align:center;color:var(--text-dark);outline:none;transition:border-color 0.2s;border-radius:2px;ime-mode:disabled;}
-.code-digit:focus{border-color:var(--gold);}
-.modal-actions{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
-.modal-close-btn{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.1rem;color:var(--text-mid);cursor:pointer;padding:4px 8px;}
-.modal-close-btn:hover{color:var(--rose);}
-/* My photos modal */
-.my-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin:16px 0;max-height:300px;overflow-y:auto;}
+/* Cihaz kodu başarı kutusu */
+.success-device-box{margin:16px 0;padding:20px;background:linear-gradient(135deg,#fff8ee,#f5ede0);border:1px solid var(--border);text-align:center;}
+.success-device-label{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.35em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;display:block;}
+.success-device-val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text-dark);letter-spacing:0.08em;display:block;}
+.success-device-note{font-size:0.72rem;color:var(--text-mid);margin-top:6px;line-height:1.5;display:block;}
+/* My photos */
+.my-photos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:16px 0;max-height:280px;overflow-y:auto;}
 .my-photo-item{position:relative;aspect-ratio:1;cursor:pointer;border:2px solid transparent;border-radius:2px;overflow:hidden;transition:border-color 0.2s;}
 .my-photo-item img{width:100%;height:100%;object-fit:cover;display:block;}
 .my-photo-item.selected{border-color:var(--rose);}
 .my-photo-item .del-check{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(192,102,93,0.9);color:#fff;font-size:0.65rem;display:none;align-items:center;justify-content:center;}
 .my-photo-item.selected .del-check{display:flex;}
+.modal-actions{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;}
+.modal-close-btn{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.1rem;color:var(--text-mid);cursor:pointer;padding:4px 8px;}
+.modal-close-btn:hover{color:var(--rose);}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);padding:12px 28px;font-size:0.82rem;border-radius:2px;z-index:3000;box-shadow:0 4px 20px rgba(0,0,0,0.2);max-width:90vw;text-align:center;display:none;}
 .toast.error{background:#7a2a22;color:#ffeae8;}
 .toast.success{background:var(--green);color:#e8f5e5;}
@@ -178,6 +175,10 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
       <i class="fa-solid fa-circle-info"></i>
       Lütfen yalnızca <strong>nişan gününde</strong> çekilmiş fotoğraflarınızı ekleyiniz. Başka türde fotoğraflar kullanmayınız.
     </div>
+    <div class="device-code-notice">
+      <i class="fa-solid fa-mobile-screen"></i>
+      <span>Yüklediğiniz fotoğraflar bu cihaza otomatik bağlanır. Fotoğraflarınızı silmek istediğinizde <strong>aynı cihazdan</strong> "Fotoğrafımı Sil" butonunu kullanın.</span>
+    </div>
     <div class="form-field">
       <label class="form-label" for="upload-name">Adınız <span class="form-required">*</span></label>
       <input class="form-input" type="text" id="upload-name" placeholder="Adınızı girin" maxlength="60">
@@ -225,12 +226,11 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
     <button class="modal-close-btn" onclick="closeModal('modal-success')"><i class="fa-solid fa-xmark"></i></button>
     <div style="font-size:2rem;margin-bottom:12px;">✓</div>
     <p class="modal-title">Fotoğraf Yüklendi!</p>
-    <p class="modal-body">Fotoğrafınız albüme eklendi. Fotoğraflarınızı silmek isterseniz aşağıdaki kodu kullanabilirsiniz.</p>
-    <div class="delete-code-box">
-      <span class="delete-code-label">Silme Kodunuz</span>
-      <span class="delete-code-number" id="shown-delete-code">0000</span>
-      <span class="delete-code-warning"><i class="fa-solid fa-triangle-exclamation"></i> Bu kodu not alın! Tekrar gösterilmeyecek.</span>
-      <span class="delete-code-info">Bu kod ile yüklediğiniz <strong>tüm fotoğrafları</strong> adınızla birlikte kullanarak silebilirsiniz.</span>
+    <p class="modal-body">Fotoğrafınız albüme eklendi. Bu cihazdan yüklediğiniz tüm fotoğrafları "Fotoğrafımı Sil" butonuyla yönetebilirsiniz.</p>
+    <div class="success-device-box">
+      <span class="success-device-label">Cihaz Kodunuz</span>
+      <span class="success-device-val" id="shown-device-code">—</span>
+      <span class="success-device-note">Bu kod bu cihaza özel olarak kaydedildi. Aynı cihazdan yüklediğiniz tüm fotoğraflarınız bu kodla bağlıdır.</span>
     </div>
     <div class="modal-actions">
       <button class="btn-sm primary" onclick="closeModal('modal-success');switchTab('gallery');loadPhotos();"><i class="fa-solid fa-images"></i> Galeriye Git</button>
@@ -238,44 +238,29 @@ body{background:var(--cream-bg);color:var(--text-dark);font-family:'Raleway',san
   </div>
 </div>
 
-<!-- MY PHOTOS MODAL — adını ve kodu gir, fotoğraflarını gör, seç, sil -->
+<!-- MY PHOTOS MODAL -->
 <div class="modal-overlay" id="modal-my-photos">
-  <div class="modal-box" style="max-width:560px;">
+  <div class="modal-box">
     <button class="modal-close-btn" onclick="closeModal('modal-my-photos')"><i class="fa-solid fa-xmark"></i></button>
     <div style="font-size:1.8rem;margin-bottom:12px;color:var(--rose);"><i class="fa-solid fa-trash-can"></i></div>
     <p class="modal-title">Fotoğraflarımı Sil</p>
 
-    <!-- ADIM 1: Kimlik doğrulama -->
-    <div id="step-auth">
-      <p class="modal-body">Fotoğraflarınızı görmek için yükleme sırasında kullandığınız <strong>adınızı</strong> ve size verilen <strong>4 haneli silme kodunu</strong> girin.</p>
-      <div class="form-field" style="text-align:left;">
-        <label class="form-label">Adınız</label>
-        <input class="form-input" type="text" id="my-name-input" placeholder="Yükleme sırasında girdiğiniz ad">
-      </div>
-      <div class="form-field">
-        <label class="form-label" style="text-align:left;display:block;">Silme Kodunuz</label>
-        <div class="code-input-wrap">
-          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d1" autocomplete="off">
-          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d2" autocomplete="off">
-          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d3" autocomplete="off">
-          <input class="code-digit" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="d4" autocomplete="off">
-        </div>
-        <p id="auth-error" style="color:var(--rose);font-size:0.8rem;min-height:1.2em;text-align:center;"></p>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-sm" onclick="closeModal('modal-my-photos')">İptal</button>
-        <button class="btn-sm primary" onclick="findMyPhotos()"><i class="fa-solid fa-magnifying-glass"></i> Fotoğraflarımı Bul</button>
-      </div>
-    </div>
-
-    <!-- ADIM 2: Fotoğrafları göster ve sil -->
-    <div id="step-select" style="display:none;">
-      <p class="modal-body" id="my-photos-info"></p>
+    <!-- Cihaz kodu var: direkt fotoğrafları göster -->
+    <div id="step-has-code">
+      <p class="modal-body" id="my-photos-info">Bu cihazdan yüklenen fotoğraflar aranıyor...</p>
       <div class="my-photos-grid" id="my-photos-grid"></div>
       <p id="select-error" style="color:var(--rose);font-size:0.8rem;min-height:1.2em;text-align:center;margin-top:8px;"></p>
       <div class="modal-actions">
-        <button class="btn-sm" onclick="showStep('step-auth')">Geri</button>
+        <button class="btn-sm" onclick="closeModal('modal-my-photos')">Kapat</button>
         <button class="btn-sm danger" id="btn-delete-selected" onclick="deleteSelectedPhotos()"><i class="fa-solid fa-trash"></i> Seçilenleri Sil</button>
+      </div>
+    </div>
+
+    <!-- Cihaz kodu yok: bilgilendirme -->
+    <div id="step-no-code" style="display:none;">
+      <p class="modal-body">Bu cihazdan daha önce fotoğraf yüklenmemiş. Fotoğraf yüklemek için "Fotoğraf Yükle" sekmesini kullanın.</p>
+      <div class="modal-actions">
+        <button class="btn-sm primary" onclick="closeModal('modal-my-photos');switchTab('upload');"><i class="fa-solid fa-cloud-arrow-up"></i> Fotoğraf Yükle</button>
       </div>
     </div>
   </div>
@@ -289,8 +274,23 @@ const CLOUD_NAME    = "dp4kalxzq";
 const UPLOAD_PRESET = "nisan_album";
 const UPLOAD_URL    = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
 const LIST_URL      = `https://res.cloudinary.com/${CLOUD_NAME}/image/list/nisan.json`;
+const DEVICE_KEY    = 'nisan_device_id';
 
-// Yerel önbellek — sayfa yenilemeden hızlı güncelleme için
+/* ── CİHAZ KODU — localStorage'dan al, yoksa üret ve kaydet ── */
+function getDeviceId() {
+  let id = localStorage.getItem(DEVICE_KEY);
+  if (!id) {
+    // Benzersiz kod: zaman damgası + rastgele
+    const rand = Math.random().toString(36).slice(2,8).toUpperCase();
+    const ts   = Date.now().toString(36).slice(-4).toUpperCase();
+    id = `${rand}${ts}`;
+    localStorage.setItem(DEVICE_KEY, id);
+  }
+  return id;
+}
+
+const DEVICE_ID = getDeviceId();
+
 let _photoCache = [];
 
 function showToast(msg, type='error') {
@@ -301,10 +301,6 @@ function showToast(msg, type='error') {
 }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 function openModal(id)  { document.getElementById(id).classList.add('open'); }
-function showStep(id) {
-  document.getElementById('step-auth').style.display = id==='step-auth' ? 'block' : 'none';
-  document.getElementById('step-select').style.display = id==='step-select' ? 'block' : 'none';
-}
 function switchTab(tab) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -315,12 +311,23 @@ function switchTab(tab) {
 /* ── CONTEXT PARSER ── */
 function parseContext(r) {
   try {
-    if (r.context && r.context.custom) return r.context.custom;
+    if (r.context && r.context.custom) {
+      const c = r.context.custom;
+      // decodeURIComponent uygula
+      const out = {};
+      for (const k in c) {
+        try { out[k] = decodeURIComponent(c[k]); } catch { out[k] = c[k]; }
+      }
+      return out;
+    }
     if (r.context && typeof r.context === 'string') {
       const obj = {};
       r.context.split('|').forEach(pair => {
         const idx = pair.indexOf('=');
-        if (idx > -1) obj[pair.slice(0,idx)] = decodeURIComponent(pair.slice(idx+1));
+        if (idx > -1) {
+          try { obj[pair.slice(0,idx)] = decodeURIComponent(pair.slice(idx+1)); }
+          catch { obj[pair.slice(0,idx)] = pair.slice(idx+1); }
+        }
       });
       return obj;
     }
@@ -329,11 +336,11 @@ function parseContext(r) {
 }
 
 /* ── LOAD PHOTOS ── */
-async function loadPhotos(skipCache=true) {
+async function loadPhotos() {
   const grid=document.getElementById('photo-grid'), empty=document.getElementById('empty-state'), loader=document.getElementById('gallery-loader');
   loader.style.display='flex'; grid.innerHTML=''; empty.style.display='none';
   try {
-    const res = await fetch(LIST_URL + '?t=' + Date.now()); // cache buster
+    const res = await fetch(LIST_URL + '?t=' + Date.now());
     if (!res.ok) throw new Error(res.status);
     const data = await res.json();
     _photoCache = (data.resources||[]).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
@@ -346,7 +353,7 @@ async function loadPhotos(skipCache=true) {
 }
 
 function renderGrid(resources) {
-  const grid = document.getElementById('photo-grid');
+  const grid  = document.getElementById('photo-grid');
   const empty = document.getElementById('empty-state');
   grid.innerHTML='';
   if (!resources.length) { empty.style.display='block'; document.getElementById('gallery-count').textContent=''; return; }
@@ -354,28 +361,28 @@ function renderGrid(resources) {
   document.getElementById('gallery-count').textContent = resources.length+' fotoğraf';
   resources.forEach((r,i) => {
     const ctx  = parseContext(r);
-    const name = (ctx.name || ctx.caption || 'Misafir');
-    const note = (ctx.note  || ctx.alt    || '');
+    const name = ctx.name || 'Misafir';
+    const note = ctx.note || '';
     const url  = r.secure_url || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`;
     const pid  = r.public_id || '';
-    const safeAttr = (s) => s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
-    const safeJs   = (s) => s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const safeA = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+    const safeJ = s => String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const card=document.createElement('div');
     card.className='photo-card'; card.style.animationDelay=(i*0.04)+'s';
     card.innerHTML=`
-      <div class="photo-card-inner" onclick="openLightbox('${safeJs(url)}','${safeJs(name)}','${safeJs(note)}','${safeJs(pid)}')">
-        <img src="${safeAttr(url)}" alt="Nişan fotoğrafı" loading="lazy">
+      <div class="photo-card-inner" onclick="openLightbox('${safeJ(url)}','${safeJ(name)}','${safeJ(note)}')">
+        <img src="${safeA(url)}" alt="Nişan fotoğrafı" loading="lazy">
         <div class="photo-overlay">
           <div class="photo-overlay-content">
             <p class="photo-uploader"><i class="fa-solid fa-user"></i> ${name}</p>
             ${note ? `<p class="photo-note">&ldquo;${note}&rdquo;</p>` : ''}
             <div class="photo-actions" onclick="event.stopPropagation()">
-              <button class="btn-icon" title="İndir" onclick="downloadPhoto('${safeJs(url)}','${safeJs(pid)}')"><i class="fa-solid fa-download"></i></button>
+              <button class="btn-icon" title="İndir" onclick="downloadPhoto('${safeJ(url)}','${safeJ(pid)}')"><i class="fa-solid fa-download"></i></button>
             </div>
           </div>
         </div>
         <label class="select-checkbox" title="Seç" onclick="event.stopPropagation()">
-          <input type="checkbox" class="photo-select" data-url="${safeAttr(url)}" data-file="${safeAttr(pid)}">
+          <input type="checkbox" class="photo-select" data-url="${safeA(url)}" data-file="${safeA(pid)}">
           <span class="checkmark"><i class="fa-solid fa-check"></i></span>
         </label>
       </div>`;
@@ -384,8 +391,6 @@ function renderGrid(resources) {
 }
 
 /* ── UPLOAD ── */
-function generateCode() { return String(Math.floor(1000 + Math.random() * 9000)); }
-
 async function handleUpload() {
   const nameVal = document.getElementById('upload-name').value.trim();
   const noteVal = document.getElementById('upload-note').value.trim();
@@ -397,8 +402,8 @@ async function handleUpload() {
   const btn=document.getElementById('upload-btn'), prog=document.getElementById('upload-progress'), bar=document.getElementById('progress-bar-fill'), status=document.getElementById('upload-status');
   btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Yükleniyor...'; prog.style.display='block';
 
-  const deleteCode = generateCode();
   let done=0;
+  const newPhotos = [];
 
   try {
     for (const file of files) {
@@ -406,10 +411,10 @@ async function handleUpload() {
       fd.append('file', file);
       fd.append('upload_preset', UPLOAD_PRESET);
       fd.append('tags', 'nisan');
-      // Türkçe karakter desteği için encodeURIComponent
-      fd.append('context', `name=${encodeURIComponent(nameVal)}|note=${encodeURIComponent(noteVal)}|deleteCode=${deleteCode}`);
+      // Cihaz ID'si context'e kaydediliyor — ad ve not ile birlikte
+      fd.append('context', `name=${encodeURIComponent(nameVal)}|note=${encodeURIComponent(noteVal)}|deviceId=${DEVICE_ID}`);
 
-      await new Promise((resolve,reject) => {
+      const result = await new Promise((resolve,reject) => {
         const xhr=new XMLHttpRequest();
         xhr.open('POST', UPLOAD_URL);
         xhr.upload.onprogress=e => {
@@ -419,13 +424,26 @@ async function handleUpload() {
             status.textContent=(done+1)+' / '+files.length+' yükleniyor... %'+pct;
           }
         };
-        xhr.onload=()=>{ if(xhr.status===200){done++;resolve();}else reject(new Error(xhr.status)); };
+        xhr.onload=()=>{
+          if(xhr.status===200){ done++; resolve(JSON.parse(xhr.responseText)); }
+          else reject(new Error(xhr.status));
+        };
         xhr.onerror=reject;
         xhr.send(fd);
       });
+      newPhotos.push(result);
     }
 
     bar.style.width='100%'; status.textContent=files.length+' fotoğraf yüklendi!';
+
+    // Önbelleğe ekle ve galeriyi anında güncelle
+    newPhotos.forEach(r => {
+      if (!_photoCache.find(c=>c.public_id===r.public_id)) {
+        _photoCache.unshift(r);
+      }
+    });
+    renderGrid(_photoCache);
+
     setTimeout(() => {
       btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-cloud-arrow-up"></i> Yükle';
       prog.style.display='none'; bar.style.width='0';
@@ -434,9 +452,9 @@ async function handleUpload() {
       fileInp.value='';
       document.getElementById('file-preview').innerHTML='';
       document.getElementById('file-label-text').textContent='Fotoğraf seçin veya sürükleyin';
-      document.getElementById('shown-delete-code').textContent = deleteCode;
+      document.getElementById('shown-device-code').textContent = DEVICE_ID;
       openModal('modal-success');
-    }, 1200);
+    }, 800);
   } catch(e) {
     btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-cloud-arrow-up"></i> Yükle'; prog.style.display='none';
     showToast('Yükleme başarısız. Lütfen tekrar deneyin.');
@@ -459,182 +477,130 @@ function previewFiles(input) {
 const dropZone=document.getElementById('file-drop-zone');
 dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('drag-over');});
 dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('drag-over'));
-dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');const input=document.getElementById('upload-file');input.files=e.dataTransfer.files;previewFiles(input);});
+dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('drag-over');const inp=document.getElementById('upload-file');inp.files=e.dataTransfer.files;previewFiles(inp);});
 
 /* ── LIGHTBOX ── */
 let _lbUrl='', _lbFile='';
-function openLightbox(url,name,note,pid) {
+function openLightbox(url,name,note) {
   document.getElementById('lightbox-img').src=url;
-  document.getElementById('lightbox-name').textContent=name ? '📷 '+name : '';
+  document.getElementById('lightbox-name').textContent=name?'📷 '+name:'';
   const ne=document.getElementById('lightbox-note');
-  ne.textContent=note ? '"'+note+'"' : ''; ne.style.display=note?'block':'none';
-  _lbUrl=url; _lbFile=pid;
+  ne.textContent=note?'"'+note+'"':''; ne.style.display=note?'block':'none';
+  _lbUrl=url;
   document.getElementById('lightbox').classList.add('open'); document.body.style.overflow='hidden';
 }
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.getElementById('lightbox-img').src=''; document.body.style.overflow='';
-}
-function closeLightboxOutside(e) { if (e.target===document.getElementById('lightbox')) closeLightbox(); }
-document.addEventListener('keydown',e=>{ if (e.key==='Escape') { closeLightbox(); closeModal('modal-my-photos'); closeModal('modal-success'); }});
-function downloadCurrentLightbox() { downloadPhoto(_lbUrl,_lbFile); }
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.getElementById('lightbox-img').src='';document.body.style.overflow='';}
+function closeLightboxOutside(e){if(e.target===document.getElementById('lightbox'))closeLightbox();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();closeModal('modal-my-photos');closeModal('modal-success');}});
+function downloadCurrentLightbox(){downloadPhoto(_lbUrl,_lbUrl.split('/').pop());}
 
 /* ── DOWNLOAD ── */
 async function downloadPhoto(url,filename) {
   try {
     const res=await fetch(url); const blob=await res.blob();
     const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
-    a.download=(filename?filename.split('/').pop():'nisan-foto')+'.jpg';
+    a.download=(filename||'nisan-foto')+'.jpg';
     a.click(); URL.revokeObjectURL(a.href);
   } catch { window.open(url,'_blank'); }
 }
 
-/* ── 4 HANELİ KOD GİRİŞİ (yapıştırma destekli) ── */
-function initCodeInputs() {
-  const digits = ['d1','d2','d3','d4'];
-  digits.forEach((id, idx) => {
-    const el = document.getElementById(id);
-    el.addEventListener('input', () => {
-      const val = el.value.replace(/\D/g,'');
-      el.value = val.slice(-1); // sadece 1 hane
-      if (el.value && idx < 3) document.getElementById(digits[idx+1]).focus();
-    });
-    el.addEventListener('keydown', e => {
-      if (e.key==='Backspace' && !el.value && idx > 0) document.getElementById(digits[idx-1]).focus();
-    });
-    el.addEventListener('paste', e => {
-      e.preventDefault();
-      const pasted = (e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'').slice(0,4);
-      digits.forEach((did, i) => {
-        document.getElementById(did).value = pasted[i] || '';
-      });
-      const nextEmpty = digits.find((did,i) => !pasted[i]);
-      if (nextEmpty) document.getElementById(nextEmpty).focus();
-      else document.getElementById(digits[3]).focus();
-    });
-  });
-}
-
 /* ── MY PHOTOS MODAL ── */
 function openMyPhotosModal() {
-  document.getElementById('my-name-input').value = '';
-  ['d1','d2','d3','d4'].forEach(id => document.getElementById(id).value='');
-  document.getElementById('auth-error').textContent = '';
-  showStep('step-auth');
-  openModal('modal-my-photos');
-  setTimeout(()=>document.getElementById('my-name-input').focus(), 100);
-}
-
-let _myPhotoPids = [];
-
-async function findMyPhotos() {
-  const name = document.getElementById('my-name-input').value.trim();
-  const code = ['d1','d2','d3','d4'].map(id=>document.getElementById(id).value).join('');
-  if (!name) { document.getElementById('auth-error').textContent='Lütfen adınızı girin.'; return; }
-  if (code.length < 4) { document.getElementById('auth-error').textContent='Lütfen 4 haneli kodu eksiksiz girin.'; return; }
-
-  document.getElementById('auth-error').textContent='';
-  // Önbellekten isim ve koda göre filtrele
-  const matches = _photoCache.filter(r => {
+  document.getElementById('select-error').textContent='';
+  // Bu cihaza ait fotoğrafları önbellekten filtrele
+  const mine = _photoCache.filter(r => {
     const ctx = parseContext(r);
-    const rName = (ctx.name||'').toLowerCase().trim();
-    const rCode = (ctx.deleteCode||'').trim();
-    return rName === name.toLowerCase().trim() && rCode === code;
+    return ctx.deviceId === DEVICE_ID;
   });
 
-  if (!matches.length) {
-    document.getElementById('auth-error').textContent='Ad veya kod eşleşmedi. Lütfen kontrol edin.';
+  const hasCode = document.getElementById('step-has-code');
+  const noCode  = document.getElementById('step-no-code');
+
+  if (!mine.length) {
+    hasCode.style.display='none'; noCode.style.display='block';
+    openModal('modal-my-photos');
     return;
   }
 
-  _myPhotoPids = matches.map(r=>r.public_id);
+  hasCode.style.display='block'; noCode.style.display='none';
+
   const grid = document.getElementById('my-photos-grid');
   grid.innerHTML='';
-  matches.forEach(r => {
+  mine.forEach(r => {
     const url = r.secure_url || `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${r.public_id}`;
     const div = document.createElement('div');
     div.className='my-photo-item';
-    div.dataset.pid = r.public_id;
+    div.dataset.pid=r.public_id;
     div.innerHTML=`<img src="${url}" loading="lazy"><span class="del-check"><i class="fa-solid fa-check"></i></span>`;
-    div.addEventListener('click', () => div.classList.toggle('selected'));
+    div.addEventListener('click',()=>div.classList.toggle('selected'));
     grid.appendChild(div);
   });
 
-  document.getElementById('my-photos-info').textContent = `${matches.length} fotoğraf bulundu. Silmek istediklerinizi seçin.`;
-  document.getElementById('select-error').textContent='';
-  showStep('step-select');
+  document.getElementById('my-photos-info').textContent=`Bu cihazdan ${mine.length} fotoğraf bulundu. Silmek istediklerinizi seçin.`;
+  openModal('modal-my-photos');
 }
 
 async function deleteSelectedPhotos() {
   const selected = Array.from(document.querySelectorAll('.my-photo-item.selected'));
   if (!selected.length) { document.getElementById('select-error').textContent='Lütfen en az bir fotoğraf seçin.'; return; }
 
-  const btn = document.getElementById('btn-delete-selected');
+  const btn=document.getElementById('btn-delete-selected');
   btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Siliniyor...';
   document.getElementById('select-error').textContent='';
 
-  const code = ['d1','d2','d3','d4'].map(id=>document.getElementById(id).value).join('');
-  let successCount = 0;
-
+  let successCount=0;
   for (const item of selected) {
     try {
       const res = await fetch('/.netlify/functions/delete-photo', {
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ publicId: item.dataset.pid, deleteCode: code })
+        body: JSON.stringify({ publicId: item.dataset.pid, deviceId: DEVICE_ID })
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        // Önbellekten kaldır ve grid'den kaldır
-        _photoCache = _photoCache.filter(r=>r.public_id !== item.dataset.pid);
+        _photoCache = _photoCache.filter(r=>r.public_id!==item.dataset.pid);
         item.remove();
         successCount++;
       }
-    } catch(e) { console.error(e); }
+    } catch(e){ console.error(e); }
   }
 
   btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-trash"></i> Seçilenleri Sil';
 
-  if (successCount > 0) {
-    // Galeriyi önbellekten anlık güncelle
+  if (successCount>0) {
     renderGrid(_photoCache);
-    showToast(successCount+' fotoğraf silindi.', 'success');
+    showToast(successCount+' fotoğraf silindi.','success');
     const remaining = document.querySelectorAll('.my-photo-item').length;
-    if (remaining === 0) {
-      closeModal('modal-my-photos');
-    } else {
-      document.getElementById('my-photos-info').textContent = `${remaining} fotoğraf kaldı.`;
-    }
+    if (remaining===0) closeModal('modal-my-photos');
+    else document.getElementById('my-photos-info').textContent=`${remaining} fotoğraf kaldı.`;
   } else {
-    document.getElementById('select-error').textContent = 'Silme işlemi başarısız oldu.';
+    document.getElementById('select-error').textContent='Silme işlemi başarısız oldu.';
   }
 }
 
 /* ── SELECT MODE ── */
 let selectMode=false;
-function toggleSelectMode() {
+function toggleSelectMode(){
   selectMode=!selectMode;
-  const btn=document.getElementById('btn-select-mode'), dlBtn=document.getElementById('btn-download-selected'), ctr=document.getElementById('select-counter');
-  document.querySelectorAll('.select-checkbox').forEach(el=>{ el.classList.toggle('show',selectMode); if(!selectMode) el.querySelector('input').checked=false; });
-  if (selectMode) { btn.innerHTML='<i class="fa-solid fa-xmark"></i> İptal'; btn.classList.add('primary'); dlBtn.style.display='flex'; ctr.classList.add('visible'); }
-  else { btn.innerHTML='<i class="fa-solid fa-object-group"></i> Çoklu Seç'; btn.classList.remove('primary'); dlBtn.style.display='none'; ctr.classList.remove('visible'); }
+  const btn=document.getElementById('btn-select-mode'),dlBtn=document.getElementById('btn-download-selected'),ctr=document.getElementById('select-counter');
+  document.querySelectorAll('.select-checkbox').forEach(el=>{el.classList.toggle('show',selectMode);if(!selectMode)el.querySelector('input').checked=false;});
+  if(selectMode){btn.innerHTML='<i class="fa-solid fa-xmark"></i> İptal';btn.classList.add('primary');dlBtn.style.display='flex';ctr.classList.add('visible');}
+  else{btn.innerHTML='<i class="fa-solid fa-object-group"></i> Çoklu Seç';btn.classList.remove('primary');dlBtn.style.display='none';ctr.classList.remove('visible');}
   updateSelectCounter();
 }
-function updateSelectCounter() { document.getElementById('select-count-text').textContent=document.querySelectorAll('.photo-select:checked').length+' seçildi'; }
-document.addEventListener('change',e=>{ if(e.target.classList.contains('photo-select')) updateSelectCounter(); });
+function updateSelectCounter(){document.getElementById('select-count-text').textContent=document.querySelectorAll('.photo-select:checked').length+' seçildi';}
+document.addEventListener('change',e=>{if(e.target.classList.contains('photo-select'))updateSelectCounter();});
 
-async function downloadSelected() {
+async function downloadSelected(){
   const checked=document.querySelectorAll('.photo-select:checked');
-  if (!checked.length) { showToast('Lütfen önce fotoğraf seçin.'); return; }
+  if(!checked.length){showToast('Lütfen önce fotoğraf seçin.');return;}
   const btn=document.getElementById('btn-download-selected');
-  btn.disabled=true; btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> İndiriliyor...';
-  for (const cb of checked) { await downloadPhoto(cb.dataset.url,cb.dataset.file); await new Promise(r=>setTimeout(r,500)); }
-  btn.disabled=false; btn.innerHTML='<i class="fa-solid fa-download"></i> Seçilenleri İndir';
+  btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> İndiriliyor...';
+  for(const cb of checked){await downloadPhoto(cb.dataset.url,cb.dataset.file);await new Promise(r=>setTimeout(r,500));}
+  btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-download"></i> Seçilenleri İndir';
   showToast(checked.length+' fotoğraf indirildi.','success');
 }
 
-/* ── INIT ── */
-initCodeInputs();
 window.addEventListener('load', loadPhotos);
 </script>
 </body>
